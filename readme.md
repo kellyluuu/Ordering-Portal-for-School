@@ -1,10 +1,10 @@
 
-# ABC Employee Ordering Portal 
+# ABC University's Ordering Portal 
 
 **Summary**
 | Field | Detail |
 |-------|--------|
-| Project Name | ABC University's ID Badge Generator |
+| Project Name | ABC University's ordering portal|
 | Description | ABC University's ordering portal. Create campus badges, order promotional products, clothing, stationary, and other branded material that the ABC University offers. This enables the University to control its corporate identity by consolidating its products' management, ordering, and distribution, all in one central location. |
 | Developers | Kelly Luu |
 | Live Website | {website of deployed application} |
