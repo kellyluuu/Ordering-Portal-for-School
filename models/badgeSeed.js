@@ -1,0 +1,60 @@
+module.exports= [
+  {
+    name: "Bulbasaur",
+    type: "Undergraduate",
+    title: "Student",
+    field: "SEI",
+    idNum: 123344534,
+    img: "http://img.pokemondb.net/artwork/bulbasaur.jpg",
+  },
+  {
+    name: "Charmander",
+    type: "Undergraduate",
+    title: "Student",
+    field: "SEI",
+    idNum: 123344535,
+    img: "http://img.pokemondb.net/artwork/charmander.jpg",
+  },
+  {
+    name: "Squirtle",
+    type: "Undergraduate",
+    title: "Student",
+    field: "SEI",
+    idNum: 123344536,
+    img: "http://img.pokemondb.net/artwork/squirtle.jpg",
+  },
+  {
+    name: "Pikachu",
+    type: "Undergraduate",
+    title: "Student",
+    field: "SEI",
+    idNum: 123344537,
+    img: "http://img.pokemondb.net/artwork/pikachu.jpg",
+  },
+  {
+    name: "Clefairy",
+    type: "Undergraduate",
+    title: "Student",
+    field: "SEI",
+    idNum: 123344538,
+    img: "http://img.pokemondb.net/artwork/clefairy.jpg",
+  },
+  {
+    name: "Jigglypuff",
+    type: "Undergraduate",
+    title: "Student",
+    field: "SEI",
+    idNum: 123344539,
+    img: "http://img.pokemondb.net/artwork/jigglypuff.jpg",
+  },
+
+  {
+    name: "Mongoose",
+    type: "Staff",
+    title: "Mascot",
+    field: "SEI",
+    idNum: 123344540,
+    img: "https://i.ibb.co/k9j1nQD/Screen-Shot-2022-04-24-at-12-05-31-PM.png",
+  },
+
+]

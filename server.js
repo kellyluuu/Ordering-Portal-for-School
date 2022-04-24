@@ -8,6 +8,7 @@ const methodOverride = require('method-override');
 const PORT = process.env.PORT || 3000
 const mongoose = require('mongoose')
 const storeController = require('./controllers/storeController')
+const idController = require('./controllers/idController')
 
 
 const db = mongoose.connection
@@ -27,7 +28,7 @@ const app = express()
 // *********************************
 
 app.get('/',(req,res)=>{
-    res.send('<html><body><a href="/store" >ABC University Store</a></body></html>')
+    res.send('<html><body><a href="/store" >University Store</a></body></html>')
   })
 
 
@@ -44,7 +45,7 @@ app.use(express.urlencoded({extended: true}))
 app.use("/static", express.static('public'))
 app.use(methodOverride('_method'));
 app.use('/store',storeController)
-
+app.use('/badge', idController)
 
 // *********************************
 // Routes that Render Pages with EJS

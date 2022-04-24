@@ -1,0 +1,46 @@
+
+.box {
+    color: rgb(4, 3, 3);
+    border-radius: 10px;
+    border: #444 solid 1px;
+    padding: 15px;
+    font-size: 15px;
+    align-items: center;
+  }
+
+  /* .img-card{
+    width: 120px;
+    border-radius: 10px;
+  } */
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 160px 160px 160px 160px 160px;
+    grid-gap: 15px;
+    background-color: #fff;
+    color: #444;
+    justify-content: center;
+  }
+  
+
+
+  @media (max-width: 786px) {
+    .wrapper{
+      grid-template-columns: 150px 150px 150px 150px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .wrapper{
+      grid-template-columns: 150px 150px 150px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .wrapper{
+      grid-template-columns: 150px 150px;
+    }
+  }
+  
+  
+  
