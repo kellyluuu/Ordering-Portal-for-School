@@ -1,8 +1,10 @@
 <%- include("partials/head.ejs") %>
 <body>
+
     <div class="m-5">
     <%- include("partials/header.ejs") %>
     <%- include("partials/nav.ejs") %>
+    <div class="shadow p-3 mb-5 bg-body rounded">
     <div class="mb-3">
     <div class="wrapper">
         <% products.forEach(product=>{%>
@@ -22,5 +24,7 @@
         </form>
      </section>
      </div>
+
+    </div>
 </body>
 </html>
