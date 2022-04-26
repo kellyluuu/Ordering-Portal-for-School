@@ -6,7 +6,7 @@
 #nav-button{
     padding: 5px;
     font-size: larger;
-    background-color: teal;
+    background-color: #619b8a;
 }
 .idpage{
     font: 20px Helvetica, Arial;
@@ -16,7 +16,7 @@
 }
 
 h3{
-    color: #159;
+    color: #999;
 }
 
 .back{
@@ -43,7 +43,7 @@ input{
     margin-bottom:1em;
     width: 60%;
     font-size: 16px;
-    border: 2px solid #159;
+    border: 2px solid #999;
     border-radius: 5px;
     padding: 3px;
 }
@@ -59,7 +59,7 @@ input{
     color: #fff;
     background: #159;
     padding: 5px;
-    border: 2px solid #159;
+    border: 0px solid #159;
     border-radius: 5px;
     cursor: pointer;
 }

@@ -4,6 +4,14 @@ const badge = require('../models/badge');
 const badgeSeed = require('../models/badgeSeed');
 const idRouter = express.Router();
 
+// Authorization Middleware
+idRouter.use((req, res, next) => {
+    if (req.session.loggedIn) {
+      next();
+    } else {
+      res.redirect("/user");
+    }
+  });
 
 // CREATE SEED
 idRouter.get('/seed', (req, res) => {
@@ -13,6 +21,7 @@ idRouter.get('/seed', (req, res) => {
         });
     });
 });
+
 
 //INDEX 
 idRouter.get('/',(req,res)=>{

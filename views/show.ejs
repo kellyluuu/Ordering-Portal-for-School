@@ -42,7 +42,7 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Buy Now</h4>
-              <form id="buyamtid" action="/store/<%=product._id%>/1?_method=PUT" method="POST">
+              <form id="buyamtid" action="/user/<%=product._id%>/1?_method=PUT" method="POST">
                 <label for="customRange3" class="form-label">Purchased Qty</label>
                 <input id="bQty" type="number" value="1" name="bQty">
                 <input id="buy-button" class="btn btn-primary" type="submit" value="BUY">
@@ -55,7 +55,7 @@
   let bQty = document.getElementById("bQty");
   let buyamtid = document.getElementById("buyamtid");
   bQty.oninput = function() {
-    buyamtid.setAttribute('action',`/store/<%=product._id%>/${bQty.value}?_method=PUT`) 
+    buyamtid.setAttribute('action',`/user/<%=product._id%>/${bQty.value}?_method=PUT`) 
   }
 </script>
   </html>

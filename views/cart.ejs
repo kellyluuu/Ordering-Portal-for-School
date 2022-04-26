@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <%- include("partials/nav.ejs") %>
     <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
             <div class="col-md-12 text-right mb-3">
@@ -32,16 +33,16 @@
                                     <ul class="list list-unstyled mb-0 text-left">
                                         <li>ABC Sigma</li>
                                         <li>1234 Mongo St.</li>
-                                        <li>City State 77777</li>
+                                        <li>City State 77999</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-4 ">
                                     <div class="text-sm-right">
-                                        <h4 class="invoice-color mb-2 mt-md-2">Invoice #BBB1243</h4>
+                                        <h4 class="invoice-color mb-2 mt-md-2">Invoice #ABC123</h4>
                                         <ul class="list list-unstyled mb-0">
-                                            <li>Date: <span id="date" class="font-weight-semibold">March 15, 2020</span></li>
+                                            <li>Date: <span id="date" class="font-weight-semibold"><%=date%></span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -51,7 +52,7 @@
                             <div class="mb-4 mb-md-2 text-left"> <span class="text-muted">Invoice To:</span>
                                 <ul class="list list-unstyled mb-0">
                                     <li>
-                                        <h5 class="my-2">STUDENT</h5>
+                                        <h5 class="my-2"><%=session.username%></h5>
                                     </li>
                                     <li><span class="font-weight-semibold">STUDENT</span></li>
                                     <li>ABC Sigma</li>
@@ -68,7 +69,7 @@
                                     </ul>
                                     <ul class="list list-unstyled text-right mb-0 ml-auto">
                                         <li>
-                                            <h5 id="total-t"class="font-weight-semibold my-2">$1,090</h5>
+                                            <h5 id="total-t"class="font-weight-semibold my-2">$<%= 1.25*total.toFixed(0)%></h5>
                                         </li>
                                     </ul>
                                 </div>
@@ -80,40 +81,22 @@
                             <thead>
                                 <tr>
                                     <th>Description</th>
-                                    <th>Rate</th>
+                                    <th>Cost</th>
                                     <th>Qty</th>
                                     <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <% cart.forEach(cart=>{%>
                                 <tr>
                                     <td>
-                                        <h6 class="mb-0">Arts and design template</h6> <span class="text-muted">in
-                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                            pariatur.Duis aute irure dolor in reprehenderit</span>
+                                        <h6 class="mb-0"><%= cart.name %></h6> <span class="text-muted"><img width="50px" src="<%= cart.img %> "> </span>
                                     </td>
-                                    <td>$120</td>
-                                    <td>180</td>
-                                    <td><span class="font-weight-semibold">$300</span></td>
+                                    <td>$<%= cart.price.toFixed(2) %> </td>
+                                    <td><%= parseInt(cart.description)%></td>
+                                    <td><span class="font-weight-semibold">$<%= parseInt(cart.description)*cart.price.toFixed(2)%></span></td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <h6 class="mb-0">Template for desnging the arts</h6> <span class="text-muted">Lorem
-                                            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-                                    </td>
-                                    <td>$140</td>
-                                    <td>100</td>
-                                    <td><span class="font-weight-semibold">$240</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h6 class="mb-0">Technical support international</h6> <span class="text-muted">Lorem
-                                            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-                                    </td>
-                                    <td>$250</td>
-                                    <td>$250</td>
-                                    <td><span class="font-weight-semibold">$500</span></td>
-                                </tr>
+                                <% }) %> 
                             </tbody>
                         </table>
                     </div>
@@ -126,16 +109,18 @@
                                         <tbody>
                                             <tr>
                                                 <th class="text-left">Subtotal:</th>
-                                                <td class="text-right">$1,090</td>
+                                                <td class="text-right">
+                                                    
+                                                    $<%=total%></td>
                                             </tr>
                                             <tr>
                                                 <th class="text-left">Tax: <span class="font-weight-normal">(25%)</span></th>
-                                                <td class="text-right">$27</td>
+                                                <td class="text-right">$<%= 0.25*total.toFixed(0)%></td>
                                             </tr>
                                             <tr>
                                                 <th class="text-left">Total:</th>
                                                 <td class="text-right text-primary">
-                                                    <h5 class="font-weight-semibold">$1,160</h5>
+                                                    <h5 class="font-weight-semibold">$<%= 1.25*total.toFixed(0)%></h5>
                                                 </td>
                                             </tr>
                                         </tbody>

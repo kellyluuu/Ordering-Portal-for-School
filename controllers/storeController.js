@@ -3,11 +3,16 @@ const express = require('express');
 const Product = require('../models/product');
 const productSeed = require('../models/productSeed');
 const storeRouter = express.Router();
-const bcrypt = require("bcrypt");
-const User = require("../models/user");
-let cartArr = []
 
 
+// Authorization Middleware
+storeRouter.use((req, res, next) => {
+    if (req.session.loggedIn) {
+      next();
+    } else {
+      res.redirect("/user");
+    }
+  });
 
 // CREATE SEED
 
@@ -19,11 +24,8 @@ storeRouter.get('/seed', (req, res) => {
     });
 });
 
-//CART PAGE 
-storeRouter.get('/cart',(req,res)=>{
-    const currentCart = cartArr
-    res.render('cart.ejs',{currentCart})
-    })
+
+
 
 //INDEX 
 storeRouter.get('/',(req,res)=>{
@@ -33,15 +35,6 @@ storeRouter.get('/',(req,res)=>{
 })
 
 
-// storeRouter.get("/", (req, res) => {
-//     if (req.session.loggedIn) {
-//       res.render("signin.ejs", {
-//         currentUser: req.session.username,
-//       });
-//     } else {
-//       res.render("index.ejs");
-//     }
-//   });
 
 
 //NEW 
@@ -91,15 +84,16 @@ storeRouter.put('/:id',(req,res)=>{
     })
 })
 
-//UPDATE AFTER BUY 
-storeRouter.put('/:id/:qty',(req,res)=>{
-    Product.findById(req.params.id,(err, editProduct)=>{
-    editProduct.description = req.params.qty
-    let buyArr = editProduct
-    cartArr.push(buyArr)
-    res.redirect('/store')        
-})
-})
+// //UPDATE AFTER BUY 
+// storeRouter.put('/:id/:qty',(req,res)=>{
+//     Product.findById(req.params.id,(err, editProduct)=>{
+//     editProduct.description = req.params.qty
+//     let buyArr = editProduct
+//     cartArr.push(buyArr)
+//     console.log(cartArr)
+//     res.redirect('/store')        
+// })
+// })
 
 
 

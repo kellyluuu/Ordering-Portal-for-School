@@ -30,9 +30,9 @@ const app = express()
 // Routers
 // *********************************
 
-// app.get('/',(req,res)=>{
-//     res.send('<html><body><a href="/store" >University Store</a></body></html>')
-//   })
+app.get('/',(req,res)=>{
+    res.send('<html><body><a href="/store" >University Store</a></body></html>')
+  })
 
 
 // *********************************
@@ -48,9 +48,6 @@ mongoose.connect(process.env.DATABASE_URL, {
 app.use(express.urlencoded({extended: true}))
 app.use("/static", express.static('public'))
 app.use(methodOverride('_method'));
-app.use('/store',storeController)
-app.use('/badge', idController)
-
 
 app.use(
   session({
@@ -61,27 +58,22 @@ app.use(
   })
 );
 
+app.use("/user", UserRouter);
+app.use('/store',storeController)
+app.use('/badge', idController)
+
+
 // *********************************
 // Routes that Render Pages with EJS
 // *********************************
 
-app.use("/user", UserRouter);
 
-// app.get("/", (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.render("badge.ejs", {
-//       currentUser: req.session.username,
-//     });
-//   } else {
-//     res.render("index.ejs");
-//   }
-// });
+
 
 
 // *********************************
 // API Routes that Return JSON
 // *********************************
-
 
 
 
