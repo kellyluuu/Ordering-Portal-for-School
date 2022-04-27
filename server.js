@@ -12,6 +12,7 @@ const idController = require('./controllers/idController')
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const UserRouter = require("./controllers/user");
+const DATABASE_URL = process.env.DATABASE_URL 
 
 
 const db = mongoose.connection
@@ -39,7 +40,7 @@ app.get('/',(req,res)=>{
 // Middleware
 // *********************************
 // Global Middleware
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -52,7 +53,7 @@ app.use(methodOverride('_method'));
 app.use(
   session({
     secret: process.env.SECRET,
-    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
+    store: MongoStore.create({ mongoUrl: DATABASE_URL }),
     saveUninitialized: true,
     resave: false,
   })

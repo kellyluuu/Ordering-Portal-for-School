@@ -3,6 +3,7 @@ const express = require('express');
 const Product = require('../models/product');
 const productSeed = require('../models/productSeed');
 const storeRouter = express.Router();
+require('dotenv').config()
 
 
 // Authorization Middleware
@@ -30,6 +31,7 @@ storeRouter.get('/seed', (req, res) => {
 //INDEX 
 storeRouter.get('/',(req,res)=>{
     Product.find({},(err, products)=>{
+        console.log(req.session)
         res.render('index.ejs',{products},)
     })
 })
@@ -69,6 +71,7 @@ storeRouter.get('/:id/edit',(req,res)=>{
         res.render('edit.ejs',{editProduct})
     })
 })
+
 
 
 //UPDATE

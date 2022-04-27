@@ -17,17 +17,18 @@ let cartArr= []
 /* -------------------------------------------------------------------------- */
 
 UserRouter.get("/", (req, res) => {
+  const alertlog ='Please sign in'
   if (req.session.loggedIn) {
     res.redirect("/user/store", {
       currentUser: req.session.username,
     });
   } else {
-    res.render("login.ejs");
+    res.render("login.ejs",{alertlog});
   }
 });
 
 
-//CART ==> INDEX 
+/* ---------------------------- //CART ==> INDEX ---------------------------- */
 UserRouter.get('/cart',(req,res)=>{
   const session = req.session
   const date = new Date().toLocaleString('en-US')
@@ -43,8 +44,10 @@ UserRouter.get('/cart',(req,res)=>{
   res.render('cart.ejs',{session, date, cart, total})
 })
 
+/* ----------------------------------- end ---------------------------------- */
 
-//CART ===> New or add items by clicking buy button
+
+/* ----------- //CART ===> New or add items by clicking buy button ---------- */
 //UPDATE AFTER BUY 
 UserRouter.put('/:id/:qty',(req,res)=>{
   Product.findById(req.params.id,(err, editProduct)=>{
@@ -57,23 +60,28 @@ UserRouter.put('/:id/:qty',(req,res)=>{
 })
 })
 
-
+/* ----------------------------------- end ---------------------------------- */
 
 
 // sign up - GET: takes us to sign up page
 UserRouter.get("/signup", (req, res) => {
-  res.render("signup.ejs");
+  const alertlog =`Create a new user`
+  res.render("signup.ejs",{alertlog});
 });
 
 // sign up - POST: creates the user in db
 UserRouter.post("/signup", async (req, res) => {
+
   // encrypt password first
   req.body.password = await bcrypt.hash(req.body.password, await bcrypt.genSalt(10));
   // create the new user in db
   User.create(req.body, (err, user) => {
-    if (err) console.log(err)
-    // then redirect them to log in page to sign in 
-    res.redirect("/user");
+    const alertlog =`Existing user. Enter another email.`
+    if (err){ 
+      res.render('signup.ejs',{alertlog})
+    }else{
+      res.redirect("/user")
+    }
   });
 });
 
@@ -86,13 +94,15 @@ UserRouter.post("/login", (req, res) => {
   User.findOne({ username }, async (err, user) => {
     // handle if user doesn't exist
     if (err || !user){
-      res.send('<html><body>This account doesnt exist <br></br><a href="/user">Try Again</a><br><a href="/user/signup">sign-up</a></body></html>')
+      const alertlog =`This account doesnt exist`
+      res.render('login.ejs',{alertlog})
     }else{
     // compare passwords
     const passwordMatches = await bcrypt.compare(password, user.password);
     // check is match was a success
     if (!passwordMatches){
-    res.send('<html><body>Incorrect Password<br></br><a href="/user">Try Again</a><br><a href="/user/signup">sign-up</a></body></html>');
+      const alertlog =`Incorrect Password`
+    res.render('login.ejs',{alertlog});
     // save login info in sessions
     }else{
     req.session.loggedIn = true
@@ -107,10 +117,10 @@ UserRouter.post("/login", (req, res) => {
 
 // logout
 UserRouter.get("/logout", (req, res) => {
+  const alertlog =`${req.session.username} logged out`
   cartArr= []
-  console.log(`(╯°□°)╯ BYE! ${req.session.username}`)
     req.session.destroy((err) => {
-        res.redirect("/user")
+        res.render("login.ejs",{alertlog})
        
     })
 })

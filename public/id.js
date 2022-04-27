@@ -29,9 +29,17 @@ function prev(){
 
 
 
+
+
+
 function loadImage(event){
   const image = document.getElementById('imgDisplayed')
   image.src = URL.createObjectURL(event.target.files[0])
+//   const imgbbUploader = require("imgbb-uploader");
+// imgbbUploader("8e39f6657dfaf21c77ec0dec6d27ac66", `${image.src}`)
+// .then((response) => console.log(response))
+// .catch((error) => console.error(error));
+
 }
 
 window.onload = function () {
@@ -74,10 +82,4 @@ const outputHtmlA = matches => {
       matchLista.innerHTML = html
   }
 }
-search.addEventListener('input', ()=> filterDataA (search.value))
 
-matchLista.addEventListener('click', (event)=>{
-  search.value = `${event.target.parentElement.id}`
-  matches = [];
-  matchLista.innerHTML = ""
-})
