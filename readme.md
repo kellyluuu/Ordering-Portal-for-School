@@ -51,6 +51,14 @@ For backend Applications you'll want to detail the different routes and types of
 
 ## List of Libraries
 
+
+
+## Technologies Used:
+- JavaScript
+- Indesign
+- API imgbb
+- HTML
+- CSS
 - dotenv
 - bcrypt
 - connect-mongo
@@ -64,20 +72,10 @@ For backend Applications you'll want to detail the different routes and types of
 - bootstrap
 - cdnjs html2pdf
 
-## Technologies Used:
-- JavaScript
-- API imgbb
-- HTML
-- CSS
-- ejs
-
-## Next Steps:
-- create access level based on user 
-- create upload image from local path to generate url 
-- Cart page can pull history when user log back in
-
-
 ## User Interface Mockups
+![Web Mockup](doc/index.png)
+
+## Actual Site
 ### Main Page
 ![Web Mockup](doc/main-page.png)
 
@@ -89,5 +87,11 @@ For backend Applications you'll want to detail the different routes and types of
 
 ### Prodcut and Edit Page
 ![Web Mockup](doc/product-edit.png)
+
+## Next Steps:
+- create access level based on user 
+- create upload image from local path to generate url 
+- Cart page can pull history when user log back in
+
 
 
