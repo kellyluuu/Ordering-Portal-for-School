@@ -4,6 +4,9 @@ const Product = require('../models/product');
 const productSeed = require('../models/productSeed');
 const storeRouter = express.Router();
 require('dotenv').config()
+const IMGBB_API_KEY = process.env.IMGBB_API_KEY
+
+
 
 
 // Authorization Middleware
@@ -28,21 +31,30 @@ storeRouter.get('/seed', (req, res) => {
 
 
 
+
 //INDEX 
 storeRouter.get('/',(req,res)=>{
     Product.find({},(err, products)=>{
-        console.log(req.session)
         res.render('index.ejs',{products},)
     })
 })
 
-
-
+const imgbbUploader = require("imgbb-uploader");
 
 //NEW 
 storeRouter.get('/new',(req,res)=>{
     res.render('new.ejs')
 })
+
+
+
+
+
+
+
+
+
+
 
 //CREATE
 storeRouter.post('/',(req,res)=>{

@@ -12,7 +12,7 @@ const idController = require('./controllers/idController')
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const UserRouter = require("./controllers/user");
-const DATABASE_URL = process.env.DATABASE_URL 
+
 
 
 const db = mongoose.connection
@@ -32,10 +32,10 @@ const app = express()
 // *********************************
 
 app.get('/',(req,res)=>{
-    res.send('<html><body><a href="/store" >University Store</a></body></html>')
+    res.redirect('/store')
   })
 
-
+  const DATABASE_URL = process.env.DATABASE_URL
 // *********************************
 // Middleware
 // *********************************
@@ -50,9 +50,10 @@ app.use(express.urlencoded({extended: true}))
 app.use("/static", express.static('public'))
 app.use(methodOverride('_method'));
 
+const SECRET = process.env.SECRET
 app.use(
   session({
-    secret: process.env.SECRET,
+    secret: SECRET,
     store: MongoStore.create({ mongoUrl: DATABASE_URL }),
     saveUninitialized: true,
     resave: false,

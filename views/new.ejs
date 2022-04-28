@@ -1,9 +1,11 @@
 <%- include("partials/head.ejs") %>
 
 
+
 <body class="m-5">
   <div class="m-5">
     <%- include("partials/header.ejs") %>
+    <%- include("partials/nav.ejs") %>
     <h1>New Product</h1>
 
     <form action="/store" method="POST">
@@ -32,6 +34,31 @@
       </div>
       <input type="submit" class="btn btn-primary m-3" value="Add Product">
 </form>
+<br>
+<br>
+
+<!-- 
+<h3>Create Image URL</h3>
+<form action="">
+<label class="upload" for="file">Upload an Image</label>
+                <br>
+                <input class="btn btn-primary" type="file" id="file" accept="image/*" onchange="loadImage(event)">
+            </form>
+              <div class="card m-5" id="result">
+                  <div class="content">
+                      <img width =300px src="" id="imgDisplayed">
+
+                  </div>
+                  <h4 id="new-url-img"></h4>
+              </div>
+              <span id="createUrl">
+              <form>
+              <button class="btn btn-primary m-3" onclick="loadUrl(event)" id="preview">Create URL Link</button>
+              <br>
+            </form>
+          </span> -->
+
     
 </body>
+<!-- <script defer src="/static/app.js"></script> -->
 </html>

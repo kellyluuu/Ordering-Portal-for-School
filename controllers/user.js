@@ -3,12 +3,14 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const Product = require('../models/product');
 const UserRouter = express.Router();
-function UserCart(username) {
-  this.username = username;
-  this.items =[];
-}
 
-let userCart = UserCart()
+
+// function UserCart(username) {
+//   this.username = username;
+//   this.items =[];
+// }
+
+// let userCart = UserCart()
 
 let cartArr= []
 
@@ -45,6 +47,7 @@ UserRouter.get('/cart',(req,res)=>{
 })
 
 /* ----------------------------------- end ---------------------------------- */
+
 
 
 /* ----------- //CART ===> New or add items by clicking buy button ---------- */
@@ -107,7 +110,7 @@ UserRouter.post("/login", (req, res) => {
     }else{
     req.session.loggedIn = true
     req.session.username = username
-    UserCart(req.session.username)
+    // UserCart(req.session.username)
     console.log(req.session)
     // redirect to dashboard
     res.redirect("/store");
