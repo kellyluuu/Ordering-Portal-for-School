@@ -1,14 +1,14 @@
 
-# ABC University's Ordering Portal 
+# Ordering Portal for School  
 
 **Summary**
 | Field | Detail |
 |-------|--------|
-| Project Name | ABC University's ordering portal|
-| Description | ABC University's ordering portal. Create campus badges, order promotional products, clothing, stationary, and other branded material that the ABC University offers. This enables the University to control its corporate identity by consolidating its products' management, ordering, and distribution, all in one central location. |
+| Project Name | Ordering portal for school|
+| Description | Website for School to products. Create campus badges, order promotional products, clothing, stationary, and other branded material that the school offers. This enables the school to control cost and promot branding |
 | Developers | Kelly Luu |
-| Live Website | {website of deployed application} |
-| Repo | {Link to git repository} |
+| Live Website | {[website of deployed application](https://universitystore.herokuapp.com/store)} |
+| Repo | {[Link to git repository](https://github.com/kellyluuu/Project2)} |
 
 ## Problem Being Solved and Target Market
 
@@ -42,30 +42,52 @@ For backend Applications you'll want to detail the different routes and types of
 | /store/:id/edit | GET | JSON of item with matching id number | (EDIT) view of product id selected populated in same form as new product page|
 | /store/:id | PUT | return update as JSON | (UPDATE) update data in mongodb and redirect to /store/_id  |
 | /store/:id | DELETE | delete the item with the matching id | (DELETE) from mongodp and redirect to /store|
-
-
-## Route Tables - Items to add after MVP
-
-| Endpoint | Method | Response | Other |
-| -------- | ------ | -------- | ----- |
-| /auth/signup | POST | creates new user account returns user JSON | new user info must be included in body |
-| /auth/login | POST | logs in user and returns user JSON with JWT token | username and password must be included in body |
-| /store/cart | GET | render cart.ejs | view all products from 2nd schema (session)|
+| /user | GET | render login.ejs | render login page, create session if login and redirect to store page|
+| /user/signup | GET | render signup.ejs | render create new user page|
+| /user/signup | POST | return new user info | redirect to login page |
+| /user/logout | GET | Destroy session and clear cart and logout |  |
+| /user/cart | GET | render cart.ejs | create cart page, calculate total, and download invoice|
 
 
 ## List of Libraries
 
 - dotenv
+- bcrypt
+- connect-mongo
+- express-session
+- imgbb-uploader
 - ejs
 - express
 - method-override
 - mongoose
-- pdf-lib
-- bootstrap
 - morgan
+- bootstrap
+- cdnjs html2pdf
+
+## Technologies Used:
+- JavaScript
+- API imgbb
+- HTML
+- CSS
+- ejs
+
+## Next Steps:
+- create access level based on user 
+- create upload image from local path to generate url 
+- Cart page can pull history when user log back in
+
 
 ## User Interface Mockups
-![Web Mockup](doc/index.png)
-![Web Mockup](doc/create-badge.png)
+### Main Page
+![Web Mockup](doc/main-page.png)
+
+### Log-in Page
+![Web Mockup](doc/login.png)
+
+### Generate ID page
+![Web Mockup](doc/create-ID.png)
+
+### Prodcut and Edit Page
+![Web Mockup](doc/product-edit.png)
 
 
